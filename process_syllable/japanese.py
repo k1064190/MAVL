@@ -29,7 +29,7 @@ def split_syllables(text: str):
     """
     From the given text:
       - Keep only hiragana (ぁ-ん) and 'ー'
-      - If a given pattern matches (o+う, i+유/요/야 etc.), treat it as a single chunk.
+      - If a given pattern matches (o+う, i+yu/yo/ya etc.), treat it as a single chunk.
       - 'ー' is included in the preceding syllable (unlike before, it's not separated into a new syllable).
       - みんな → ['みん', 'な'] ('ん' is attached to the preceding syllable, and a new syllable starts after it)
       - 'っ' is treated as a separate syllable (chunk).

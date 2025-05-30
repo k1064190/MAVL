@@ -16,15 +16,15 @@ import io
 
 def smart_encode_url(url):
     """
-    URL을 구성 요소별로 분리하여 먼저 디코딩(unquote)한 후,
-    다시 적절히 인코딩하여(quote, Punycode) 결합합니다.
-    이렇게 하면 이미 인코딩된 URL이 이중으로 인코딩되는 것을 방지합니다.
+    Splits URL into components, decodes them first (unquote), 
+    then properly encodes them (quote, Punycode) and combines them.
+    This prevents double encoding of already encoded URLs.
     """
     try:
         parsed_url = urlparse(url)
 
-        # 1. Netloc (호스트명) 처리: IDNA (Punycode)
-        # requests가 대부분 자동으로 처리하지만, 명시적으로 하고 싶다면
+        # 1. Netloc (hostname) processing: IDNA (Punycode)
+        # Although requests handles most cases automatically, we can do it explicitly
         encoded_netloc = parsed_url.netloc
         if parsed_url.hostname:
             try:
@@ -36,27 +36,27 @@ def smart_encode_url(url):
                 else:
                     encoded_netloc = encoded_hostname
             except idna.IDNAError:
-                # Punycode 인코딩 실패 시 원본 netloc 사용 (requests에 맡김)
-                pass 
+                # Use original netloc if Punycode encoding fails (let requests handle it)
+                pass
 
-        # 2. Path (경로) 처리: 먼저 디코딩(unquote) 후 인코딩
-        # unquote_plus는 '+'를 공백으로 디코딩하므로, 일반 unquote 사용
+        # 2. Path (path) processing: decode first (unquote) then encode
+        # Use unquote instead of unquote_plus as unquote_plus decodes '+' to space
         unquoted_path = unquote(parsed_url.path)
         encoded_path = quote(unquoted_path, safe='/')
 
-        # 3. Parameters (파라미터) 처리: 먼저 디코딩 후 인코딩
+        # 3. Parameters processing: decode first then encode
         unquoted_params = unquote(parsed_url.params)
         encoded_params = quote(unquoted_params, safe='') 
 
-        # 4. Query (쿼리 문자열) 처리: 먼저 디코딩 후 인코딩
+        # 4. Query (query string) processing: decode first then encode
         unquoted_query = unquote(parsed_url.query)
         encoded_query = quote(unquoted_query, safe='=&')
 
-        # 5. Fragment (프래그먼트) 처리: 먼저 디코딩 후 인코딩
+        # 5. Fragment processing: decode first then encode
         unquoted_fragment = unquote(parsed_url.fragment)
         encoded_fragment = quote(unquoted_fragment, safe='')
 
-        # 인코딩된 구성 요소로 URL 재구성
+        # Reconstruct URL with encoded components
         encoded_url = urlunparse((
             parsed_url.scheme,
             encoded_netloc,
@@ -73,7 +73,7 @@ def smart_encode_url(url):
         return None
 
 
-# stdout을 UTF-8로 재설정
+# Reset stdout to UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 

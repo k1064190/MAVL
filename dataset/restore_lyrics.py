@@ -344,7 +344,6 @@ def find_kr_segment_with_partial_matching(clues, all_lyrics_words, search_from_w
     )
     
     # If we have a remaining part, start by checking if it matches the first clue
-    # TODO: 이부분 고치기
     if remaining_word_part:
 
         # search_from_word_index = search_from_word_index # It already matches this word, so start from the next word

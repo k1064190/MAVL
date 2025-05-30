@@ -1,0 +1,14 @@
+epitran
+langcodes
+num2words
+pykakasi
+jieba
+python-mecab
+numpy
+beautifulsoup4
+tqdm
+idna
+yt-dlp
+python-dotenv
+huggingface_hub
+datasets

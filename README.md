@@ -5,6 +5,7 @@
 </div>
 
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-MAVL-blue)](https://huggingface.co/datasets/Noename/MAVL)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-MAVL--Repo-181717?logo=github)](https://github.com/k1064190/MAVL)
 [![arXiv](https://img.shields.io/badge/arXiv-2505.18614-b31b1b.svg)](https://arxiv.org/abs/2505.18614)
 
 This repository provides code and resources for working with the Multilingual Audio-Video Lyrics (MAVL) dataset, available on Hugging Face ([https://huggingface.co/datasets/Noename/MAVL](https://huggingface.co/datasets/Noename/MAVL)). The MAVL dataset is described in detail in the paper "[MAVL: A Multilingual Audio-Video Lyrics Dataset for Animated Song Translation](https://arxiv.org/abs/2505.18614)".

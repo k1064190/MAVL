@@ -21,7 +21,7 @@ The MAVL dataset contains a collection of YouTube URLs corresponding to songs fr
 The dataset is provided in a JSON format. Each entry represents a song and contains:
 
 * **Song Title:** The name of the animated song.
-* **`lyrics`**: A nested structure containing lyric lines for each language (`US_og` for original English, `ES` for Spanish, `FR` for French, `KO` for Korean, `JA` for Japanese). Each line includes:
+* **`lyrics`**: A nested structure containing lyric lines for each language (`US_og` for original English, `ES` for Spanish, `FR` for French, `KR` for Korean, `JP` for Japanese). Each line includes:
     * `text`: A compact representation of the original lyric line (e.g., `[["Tsimp", "There's", "pants"]]` for "Squirrels in my pants"). This is designed to allow for the reconstruction of the full lyric text using external resources.
     * `line_number`: The sequential number of the lyric line.
     * `syllable_count`: The syllable count of the lyric line.
